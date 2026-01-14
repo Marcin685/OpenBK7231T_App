@@ -1,6 +1,12 @@
 //////////////////////////////////////////////////////
 // specify which parts of the app we wish to be active
 //
+
+#ifndef ENABLE_DRIVER_DDP
+    #define ENABLE_DRIVER_DDP 1
+#endif
+
+
 #ifndef OBK_CONFIG_H
 #define OBK_CONFIG_H
 
