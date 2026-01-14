@@ -2,11 +2,6 @@
 // specify which parts of the app we wish to be active
 //
 
-#ifndef ENABLE_DRIVER_DDP
-    #define ENABLE_DRIVER_DDP 1
-#endif
-
-
 #ifndef OBK_CONFIG_H
 #define OBK_CONFIG_H
 
@@ -621,5 +616,11 @@
 // #define ENABLE_BL_MOVINGAVG					1
 #endif
 
+#ifdef PLATFORM_LN882H
+  #undef ENABLE_DRIVER_DDP
+  #define ENABLE_DRIVER_DDP 1
+#endif
+
+    
 // closing OBK_CONFIG_H
 #endif
