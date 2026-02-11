@@ -38,7 +38,7 @@ const char *g_template_lowMidHigh = "{% if value == '0' %}\n"
 void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int asensdatasetix, const char *title) {
 	//https://developers.home-assistant.io/docs/entity_registry_index/#unique-id-requirements
 	//mentions that mac can be used for unique_id and deviceName contains that.
-	const char* longDeviceName = CFG_GetShortDeviceName();
+	const char* longDeviceName = CFG_GetDeviceName();
 
 	switch (type) {
 	case LIGHT_ON_OFF:
@@ -48,8 +48,9 @@ void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int ase
 	case LIGHT_PWMCW:
 	case LIGHT_RGB:
 	case LIGHT_RGBCW:
-		sprintf(uniq_id, "%s", longDeviceName);
+		sprintf(uniq_id, "%s_%s", longDeviceName, "");
 		break;
+		
 		
 	case HASS_FAN:
 		sprintf(uniq_id, "%s_fan", longDeviceName);
@@ -529,7 +530,7 @@ HassDeviceInfo* hass_init_device_info(ENTITY_TYPE type, int index, const char* p
 		case LIGHT_RGBCW:
 			//There can only be one RGB so we can skip including index in the name. Do the same
 			//for 2 PWM case.
-			sprintf(g_hassBuffer, "%s", CFG_GetDeviceName());
+			sprintf(g_hassBuffer, "");
 			break;
 		case ENERGY_METER_SENSOR:
 			isSensor = true;
