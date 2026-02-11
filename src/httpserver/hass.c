@@ -38,7 +38,7 @@ const char *g_template_lowMidHigh = "{% if value == '0' %}\n"
 void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int asensdatasetix, const char *title) {
 	//https://developers.home-assistant.io/docs/entity_registry_index/#unique-id-requirements
 	//mentions that mac can be used for unique_id and deviceName contains that.
-	const char* shortName = CFG_GetShortDeviceName();
+	const char* longDeviceName = CFG_GetDeviceName();
 
 	switch (type) {
 	case LIGHT_ON_OFF:
@@ -48,7 +48,7 @@ void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int ase
 	case LIGHT_PWMCW:
 	case LIGHT_RGB:
 	case LIGHT_RGBCW:
-		sprintf(uniq_id, "%s", shortName);
+		sprintf(uniq_id, "%s", longDeviceName);
 		break;
 		
 	case HASS_FAN:
