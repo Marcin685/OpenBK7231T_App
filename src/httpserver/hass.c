@@ -529,7 +529,7 @@ HassDeviceInfo* hass_init_device_info(ENTITY_TYPE type, int index, const char* p
 		case LIGHT_RGBCW:
 			//There can only be one RGB so we can skip including index in the name. Do the same
 			//for 2 PWM case.
-			sprintf(g_hassBuffer, "Light");
+			sprintf(g_hassBuffer, "%s", longDeviceName);
 			break;
 		case ENERGY_METER_SENSOR:
 			isSensor = true;
