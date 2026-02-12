@@ -43,12 +43,12 @@ void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int ase
 	switch (type) {
 	case LIGHT_ON_OFF:
 	case LIGHT_PWM:
-		sprintf(uniq_id, "%s_%s_%d", longDeviceName, "", index);
+		sprintf(uniq_id, "%s_%s_%d", longDeviceName, "light", index);
 		break;
 	case LIGHT_PWMCW:
 	case LIGHT_RGB:
 	case LIGHT_RGBCW:
-		sprintf(uniq_id, "%s_%s", longDeviceName, "");
+		sprintf(uniq_id, "%s_%s", longDeviceName, "light");
 		break;
 		
 	case HASS_FAN:
