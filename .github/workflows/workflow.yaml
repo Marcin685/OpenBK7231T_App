@@ -225,48 +225,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: OpenESP32C2
-            variant: 2M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32C3
-            variant: 2M
-            version: v5.5.2
-            sdk: esp-idf
-
-          - platform: OpenESP32
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32C2
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32C3
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32C6
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32S3
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32S2
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32C5
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-          - platform: OpenESP32C61
-            variant: 4M
-            version: v5.5.2
-            sdk: esp-idf
-
           - platform: OpenESP8266
             variant: default
             version: v3.4
