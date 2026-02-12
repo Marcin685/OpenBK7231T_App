@@ -48,7 +48,8 @@ void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int ase
 	case LIGHT_PWMCW:
 	case LIGHT_RGB:
 	case LIGHT_RGBCW:
-		sprintf(uniq_id, "%s_%s", longDeviceName, "light");
+		//sprintf(uniq_id, "%s_%s", longDeviceName, "light");
+		sprintf(uniq_id, "%s", longDeviceName);
 		break;
 		
 	case HASS_FAN:
@@ -229,8 +230,8 @@ void hass_populate_device_config_channel(ENTITY_TYPE type, char* uniq_id, HassDe
 cJSON* hass_build_device_node(cJSON* ids) {
 	cJSON* dev = cJSON_CreateObject();
 	cJSON_AddItemToObject(dev, "ids", ids);     //identifiers
-	cJSON_AddStringToObject(dev, "name", CFG_GetShortDeviceName());
-	//cJSON_AddStringToObject(dev, "name", CFG_GetDeviceName());
+	//cJSON_AddStringToObject(dev, "name", CFG_GetShortDeviceName());
+	cJSON_AddStringToObject(dev, "name", CFG_GetDeviceName());
 
 #ifdef USER_SW_VER
 	cJSON_AddStringToObject(dev, "sw", USER_SW_VER);   //sw_version
@@ -530,8 +531,8 @@ HassDeviceInfo* hass_init_device_info(ENTITY_TYPE type, int index, const char* p
 		case LIGHT_RGBCW:
 			//There can only be one RGB so we can skip including index in the name. Do the same
 			//for 2 PWM case.
-			//sprintf(g_hassBuffer, "Light");
-			sprintf(g_hassBuffer, "%s", CFG_GetDeviceName());
+			sprintf(g_hassBuffer, "Light");
+			//sprintf(g_hassBuffer, "%s", CFG_GetDeviceName());
 			break;
 		case ENERGY_METER_SENSOR:
 			isSensor = true;
