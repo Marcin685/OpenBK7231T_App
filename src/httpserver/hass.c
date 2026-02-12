@@ -38,7 +38,7 @@ const char *g_template_lowMidHigh = "{% if value == '0' %}\n"
 void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int asensdatasetix, const char *title) {
 	//https://developers.home-assistant.io/docs/entity_registry_index/#unique-id-requirements
 	//mentions that mac can be used for unique_id and deviceName contains that.
-	const char* longDeviceName = CFG_GetDeviceName();
+	const char* longDeviceName = CFG_GetShortDeviceName();
 
 	switch (type) {
 	case LIGHT_ON_OFF:
@@ -230,7 +230,7 @@ void hass_populate_device_config_channel(ENTITY_TYPE type, char* uniq_id, HassDe
 cJSON* hass_build_device_node(cJSON* ids) {
 	cJSON* dev = cJSON_CreateObject();
 	cJSON_AddItemToObject(dev, "ids", ids);     //identifiers
-	cJSON_AddStringToObject(dev, "name", CFG_GetShortDeviceName());
+	cJSON_AddStringToObject(dev, "name", CFG_GetDeviceName());
 
 #ifdef USER_SW_VER
 	cJSON_AddStringToObject(dev, "sw", USER_SW_VER);   //sw_version
