@@ -387,20 +387,34 @@
 
 #elif PLATFORM_LN882H
 
+//#define ENABLE_SEND_POSTANDGET				1
 #define	ENABLE_HA_DISCOVERY						1
 #define ENABLE_MQTT								1
+#define ENABLE_TASMOTADEVICEGROUPS				1
 #define ENABLE_NTP								1
-#define ENABLE_LITTLEFS							1
+//#define ENABLE_TIME_DST						1
+#define ENABLE_DRIVER_BL0937					1
+#define ENABLE_DRIVER_BL0942					1
 #define ENABLE_DRIVER_LED 						1
-#define ENABLE_I2C								1   // Niezbędne dla BP5758D
-#define ENABLE_DRIVER_BP5758D					1   // Twój sterownik LED
-#define ENABLE_DRIVER_DDP						1   // Odbieranie strumienia xLights/WLED
-#define ENABLE_TASMOTA_JSON						1
-#define ENABLE_OBK_SCRIPTING					1
+#define ENABLE_DRIVER_WEMO						1
+#define ENABLE_DRIVER_HUE						1
+#define ENABLE_DRIVER_DHT						1
+#define ENABLE_LITTLEFS							1
+//#define ENABLE_TEST_COMMANDS					1
 #define ENABLE_EXPAND_CONSTANT					1
+#define ENABLE_DRIVER_OPENWEATHERMAP			1
+//#define ENABLE_DRIVER_TMGN					1
+#define ENABLE_TASMOTA_JSON						1
+#define ENABLE_DRIVER_DS1820					1
+#define ENABLE_OBK_SCRIPTING					1
 #define ENABLE_DRIVER_SSDP						1
 #define ENABLE_ADVANCED_CHANNELTYPES_DISCOVERY	1
-#define ENABLE_TASMOTADEVICEGROUPS				1
+//#define ENABLE_OBK_BERRY						1
+#define ENABLE_DRIVER_SM16703P					1
+#define ENABLE_DRIVER_PIXELANIM					1
+#define ENABLE_DRIVER_IRREMOTEESP				1
+#define ENABLE_DRIVER_TUYAMCU					1
+#define ENABLE_DRIVER_DDP						1
 
 #elif PLATFORM_ESPIDF
 
