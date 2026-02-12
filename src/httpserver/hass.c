@@ -38,7 +38,7 @@ const char *g_template_lowMidHigh = "{% if value == '0' %}\n"
 void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int asensdatasetix, const char *title) {
 	//https://developers.home-assistant.io/docs/entity_registry_index/#unique-id-requirements
 	//mentions that mac can be used for unique_id and deviceName contains that.
-	const char* longDeviceName = CFG_GetShortDeviceName();
+	const char* longDeviceName = CFG_GetDeviceName();
 
 	switch (type) {
 	case LIGHT_ON_OFF:
@@ -48,9 +48,8 @@ void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int ase
 	case LIGHT_PWMCW:
 	case LIGHT_RGB:
 	case LIGHT_RGBCW:
-		sprintf(uniq_id, "%s_%s", longDeviceName, "");
+		sprintf(uniq_id, "%s_%s", longDeviceName, "light");
 		break;
-		
 		
 	case HASS_FAN:
 		sprintf(uniq_id, "%s_fan", longDeviceName);
@@ -147,7 +146,7 @@ void hass_populate_unique_id(ENTITY_TYPE type, int index, char* uniq_id, int ase
 		sprintf(uniq_id, "%s_%s_%d", longDeviceName, "sensor", index);
 		break;
 	}
-	if (title && strcmp(title, longDeviceName)) {
+	if (title) {
 		strcat(uniq_id, "_");
 		strcat(uniq_id, title);
 	}
@@ -230,7 +229,7 @@ void hass_populate_device_config_channel(ENTITY_TYPE type, char* uniq_id, HassDe
 cJSON* hass_build_device_node(cJSON* ids) {
 	cJSON* dev = cJSON_CreateObject();
 	cJSON_AddItemToObject(dev, "ids", ids);     //identifiers
-	cJSON_AddStringToObject(dev, "name", CFG_GetDeviceName());
+	cJSON_AddStringToObject(dev, "name", CFG_GetShortDeviceName());
 
 #ifdef USER_SW_VER
 	cJSON_AddStringToObject(dev, "sw", USER_SW_VER);   //sw_version
@@ -530,7 +529,7 @@ HassDeviceInfo* hass_init_device_info(ENTITY_TYPE type, int index, const char* p
 		case LIGHT_RGBCW:
 			//There can only be one RGB so we can skip including index in the name. Do the same
 			//for 2 PWM case.
-			sprintf(g_hassBuffer, "%s", CFG_GetDeviceName());
+			sprintf(g_hassBuffer, "Light");
 			break;
 		case ENERGY_METER_SENSOR:
 			isSensor = true;
