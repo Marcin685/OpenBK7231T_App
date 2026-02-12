@@ -231,8 +231,8 @@ void hass_populate_device_config_channel(ENTITY_TYPE type, char* uniq_id, HassDe
 cJSON* hass_build_device_node(cJSON* ids) {
 	cJSON* dev = cJSON_CreateObject();
 	cJSON_AddItemToObject(dev, "ids", ids);     //identifiers
-	//cJSON_AddStringToObject(dev, "name", CFG_GetShortDeviceName());
-	cJSON_AddStringToObject(dev, "name", CFG_GetDeviceName());
+	cJSON_AddStringToObject(dev, "name", CFG_GetShortDeviceName());
+	//cJSON_AddStringToObject(dev, "name", CFG_GetDeviceName());
 
 #ifdef USER_SW_VER
 	cJSON_AddStringToObject(dev, "sw", USER_SW_VER);   //sw_version
